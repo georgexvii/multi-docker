@@ -13,3 +13,9 @@ after_success:
   - docker build -t georgexvii/multi-nginx ./nginx
   - docker build -t georgexvii/multi-server ./server
   - docker build -t georgexvii/multi-worker ./worker
+  # Log into docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push georgexvii/multi-client
+  - docker push georgexvii/multi-nginx
+  - docker push georgexvii/multi-server
+  - docker push georgexvii/multi-worker
